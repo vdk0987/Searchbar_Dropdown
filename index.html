@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Home page</title>
+  </head>
+  <body class="spacer layer1">
+    <div class="search-bar">
+      <div class="dropdown">
+        <div id="drop" class="dropdown-box">
+          <span id="span">Everything</span>
+          <i id="arrow" class="fa-solid fa-chevron-down"></i>
+        </div>
+
+        <ul id="list" class="dropdown-items">
+          <li class="dropdown-text">Everything</li>
+          <li class="dropdown-text">Software Development</li>
+          <li class="dropdown-text">Web Development</li>
+          <li class="dropdown-text">Data Analyst</li>
+          <li class="dropdown-text">IT Consultant</li>
+          <li class="dropdown-text">Network Administrator</li>
+        </ul>
+      </div>
+
+      <div class="search-box">
+        <input
+          type="text"
+          class="input-box"
+          id="search-input"
+          placeholder="Search"
+        />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+
+    <script>
+      let dropButton = document.getElementById("drop");
+      let list = document.getElementById("list");
+      let span = document.getElementById("span");
+      let input = document.getElementById("search-input");
+      let listItems = document.querySelectorAll(".dropdown-text");
+      let arrow = document.getElementById("arrow");
+
+      dropButton.onclick = function () {
+        list.classList.toggle("show");
+        if (list.classList.contains("show")) {
+        }
+      };
+
+      window.onclick = function (e) {
+        if (
+          e.target.id !== "drop" &&
+          e.target.id !== "span" &&
+          e.target.id !== "arrow"
+        ) {
+          list.classList.remove("show");
+        }
+      };
+
+      for (item of listItems) {
+        item.onclick = function (e) {
+          span.innerText = e.target.innerText;
+          input.placeholder = "Search in " + e.target.innerText;
+        };
+      }
+    </script>
+  </body>
+</html>
